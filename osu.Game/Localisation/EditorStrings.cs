@@ -35,6 +35,11 @@ namespace osu.Game.Localisation
         public static LocalisableString Timing => new TranslatableString(getKey(@"timing"), @"Timing");
 
         /// <summary>
+        /// "Sounds"
+        /// </summary>
+        public static LocalisableString Sounds => new TranslatableString(getKey(@"sounds"), @"Sounds");
+
+        /// <summary>
         /// "Set preview point to current time"
         /// </summary>
         public static LocalisableString SetPreviewPointToCurrent => new TranslatableString(getKey(@"set_preview_point_to_current"), @"Set preview point to current time");
@@ -83,6 +88,11 @@ namespace osu.Game.Localisation
         /// "timing"
         /// </summary>
         public static LocalisableString TimingScreen => new TranslatableString(getKey(@"timing_screen"), @"timing");
+
+        /// <summary>
+        /// "sounds"
+        /// </summary>
+        public static LocalisableString SoundsScreen => new TranslatableString(getKey(@"sounds_screen"), @"sounds");
 
         /// <summary>
         /// "verify"

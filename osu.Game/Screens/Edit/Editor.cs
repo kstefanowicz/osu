@@ -51,6 +51,7 @@ using osu.Game.Screens.Edit.Design;
 using osu.Game.Screens.Edit.GameplayTest;
 using osu.Game.Screens.Edit.Setup;
 using osu.Game.Screens.Edit.Timing;
+using osu.Game.Screens.Edit.Sounds;
 using osu.Game.Screens.Edit.Verify;
 using osu.Game.Screens.OnlinePlay;
 using osu.Game.Screens.Play;
@@ -739,6 +740,10 @@ namespace osu.Game.Screens.Edit
                     screenSwitcher.SelectItem(EditorScreenMode.Timing);
                     return true;
 
+                case GlobalAction.EditorSoundsMode:
+                    screenSwitcher.SelectItem(EditorScreenMode.Sounds);
+                    return true;
+
                 case GlobalAction.EditorSetupMode:
                     screenSwitcher.SelectItem(EditorScreenMode.SongSetup);
                     return true;
@@ -999,6 +1004,10 @@ namespace osu.Game.Screens.Edit
 
                     case EditorScreenMode.Timing:
                         currentScreen = new TimingScreen();
+                        break;
+
+                    case EditorScreenMode.Sounds:
+                        currentScreen = new SoundsScreen();
                         break;
 
                     case EditorScreenMode.Verify:
