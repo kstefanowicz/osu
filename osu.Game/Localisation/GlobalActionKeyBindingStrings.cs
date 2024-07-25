@@ -180,6 +180,13 @@ namespace osu.Game.Localisation
         public static LocalisableString EditorTimingMode => new TranslatableString(getKey(@"editor_timing_mode"), @"Timing mode");
 
         /// <summary>
+        /// "Sounds mode"
+        /// </summary>
+        public static LocalisableString EditorSoundsMode => new TranslatableString(getKey(@"editor_sounds_mode"), @"Sounds mode");
+
+
+
+        /// <summary>
         /// "Tap for BPM"
         /// </summary>
         public static LocalisableString EditorTapForBPM => new TranslatableString(getKey(@"editor_tap_for_bpm"), @"Tap for BPM");
