@@ -53,6 +53,14 @@ namespace osu.Game.Beatmaps.ControlPoints
         private readonly SortedList<EffectControlPoint> effectPoints = new SortedList<EffectControlPoint>(Comparer<EffectControlPoint>.Default);
 
         /// <summary>
+        /// All sample points.
+        /// </summary>
+        [JsonProperty]
+        public IReadOnlyList<SamplesetControlPoint> SamplesetPoints => samplesetPoints;
+
+        private readonly SortedList<SamplesetControlPoint> samplesetPoints = new SortedList<SamplesetControlPoint>(Comparer<SamplesetControlPoint>.Default);
+
+        /// <summary>
         /// All control points, of all types.
         /// </summary>
         [JsonIgnore]
@@ -293,6 +301,10 @@ namespace osu.Game.Beatmaps.ControlPoints
 
                 case EffectControlPoint typed:
                     effectPoints.Add(typed);
+                    break;
+
+                case SamplesetControlPoint typed:
+                    samplesetPoints.Add(typed);
                     break;
 
                 default:

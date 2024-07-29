@@ -331,6 +331,9 @@ namespace osu.Game.Screens.Edit.Timing
 
                     case SampleControlPoint sample:
                         return new SampleRowAttribute(sample);
+
+                    case SamplesetControlPoint sample:
+                        return new SamplesetRowAttribute(sample);
                 }
 
                 throw new ArgumentOutOfRangeException(nameof(controlPoint), $"Control point type {controlPoint.GetType()} is not supported");
