@@ -47,7 +47,7 @@ namespace osu.Game.Screens.Edit.Sounds
                                 {
                                 new TableHeaderText("Bank")
                                 {
-                                    
+
                                 },
                                 new SpriteIcon
                                 {
@@ -71,38 +71,7 @@ namespace osu.Game.Screens.Edit.Sounds
                                 }
                             }
                         },
-                        new FillFlowContainer
-                        {
-                            RelativeSizeAxes = Axes.Both,
-                            Margin = new MarginPadding {Left = 20, Top = 30},
-                            Spacing = new Vector2(0,30),
-                            Direction = FillDirection.Horizontal,
-                            Children = new Drawable[]
-                            {
-                                new OsuSpriteText()
-                                {
-                                    Text = "Normal"                                },
-                                new OsuSpriteText()
-                                {
-                                    Text = "Play normal-hitnormal",
-                                },
-                                new OsuSpriteText()
-                                {
-                                    Text = "Play normal-hitwhistle"
-
-                                },
-                                new OsuSpriteText()
-                                {
-                                    Text = "Play normal-hitfinish"
-
-                                },
-                                new OsuSpriteText()
-                                {
-                                    Text = "Play normal-hitclap"
-
-                                }
-                            }
-                        }
+                        new HitsoundsTableRow()
                     },
 
                 },
@@ -120,10 +89,8 @@ namespace osu.Game.Screens.Edit.Sounds
             Drum
         }
     }
-
-    public partial class DrawableHitsoundBank : PoolableDrawable
-    {
-
-    }
 }
 
+  
+
+   
