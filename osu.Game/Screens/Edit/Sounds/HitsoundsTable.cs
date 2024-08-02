@@ -31,111 +31,83 @@ namespace osu.Game.Screens.Edit.Sounds
         {
             InternalChildren = new Drawable[]
             {
-                new Box
+                new FillFlowContainer
                 {
-                    Colour = colours.Background3,
+                    Width = 500,
                     RelativeSizeAxes = Axes.Both,
-                },
-                new GridContainer
-                {
-                    RelativeSizeAxes = Axes.Both,
-                    Margin = new MarginPadding {Left = 20, Top = 10},
-                    ColumnDimensions = new[]
+                    Spacing = new Vector2(0,ROW_HEIGHT + ROW_HORIZONTAL_PADDING),
+                    Children = new Drawable[]
                     {
-                        new Dimension(GridSizeMode.AutoSize)
-                    },
-                    RowDimensions = new[]
-                    {
-                        new Dimension(GridSizeMode.AutoSize),
-                        new Dimension(GridSizeMode.AutoSize)
-                    },
-                    Content = new[]
-                    {
-                        new Drawable[] {
-                            new TableHeaderText("Bank")
-                            {
-                                Anchor = Anchor.CentreLeft,
-                                Origin = Anchor.CentreLeft
-                            },
-                            new SpriteIcon
-                            {
-                                Size = new Vector2(ROW_HEIGHT),
-                                Icon = FontAwesome.Solid.DotCircle,
-                                Margin = new MarginPadding {Left = (COLUMN_WIDTH + COLUMN_GAP) }
-                            },
-                            new SpriteIcon
-                            {
-                                Size = new Vector2(ROW_HEIGHT),
-                                Icon = OsuIcon.EditorWhistle,
-                                Margin = new MarginPadding {Left = 2 * (COLUMN_WIDTH + COLUMN_GAP) }
-                            },
-                            new SpriteIcon
-                            {
-                                Size = new Vector2(ROW_HEIGHT),
-                                Icon = OsuIcon.EditorFinish,
-                                Margin = new MarginPadding {Left = 3 * (COLUMN_WIDTH + COLUMN_GAP) }
-                            },
-                            new SpriteIcon
-                            {
-                                Size = new Vector2(ROW_HEIGHT),
-                                Icon = FontAwesome.Solid.Hands,
-                                Margin = new MarginPadding {Left = 4 * (COLUMN_WIDTH + COLUMN_GAP) }
-                            },
-                        },
-                        new Drawable[]
+                        new FillFlowContainer
                         {
-                            new OsuSpriteText()
-                            {
-                                Text = "Normal",
-                                Margin = new MarginPadding {Top = ROW_HEIGHT },
-                                RelativeSizeAxes = Axes.Both
-                            },
-                            new OsuSpriteText()
-                            {
-                                Text = "Play normal-hitnormal",
-                                RelativeSizeAxes = Axes.Both
-                            },
-                            new OsuSpriteText()
-                            {
-                                Text = "Play normal-hitwhistle",
-                                Size = new Vector2(40, 20),
-                                RelativeSizeAxes = Axes.Both
-
-                            },
-                            new OsuSpriteText()
-                            {
-                                Text = "Play normal-hitfinish",
-                                Size = new Vector2(40, 20),
-                                RelativeSizeAxes = Axes.Both
-
-                            },
-                            new OsuSpriteText()
-                            {
-                                Text = "Play normal-hitclap",
-                                Size = new Vector2(40, 20),
-                                RelativeSizeAxes = Axes.Both
-
+                            RelativeSizeAxes = Axes.X,
+                            AutoSizeAxes = Axes.Y,
+                            Direction = FillDirection.Horizontal,
+                            Children = new Drawable[]
+                                {
+                                new TableHeaderText("Bank")
+                                {
+                                    
+                                },
+                                new SpriteIcon
+                                {
+                                    Size = new Vector2(ROW_HEIGHT),
+                                    Icon = FontAwesome.Solid.DotCircle
+                                },
+                                new SpriteIcon
+                                {
+                                    Size = new Vector2(ROW_HEIGHT),
+                                    Icon = OsuIcon.EditorWhistle
+                                },
+                                new SpriteIcon
+                                {
+                                    Size = new Vector2(ROW_HEIGHT),
+                                    Icon = OsuIcon.EditorFinish
+                                },
+                                new SpriteIcon
+                                {
+                                    Size = new Vector2(ROW_HEIGHT),
+                                    Icon = FontAwesome.Solid.Hands
+                                }
                             }
                         },
-                        new Drawable[]
+                        new FillFlowContainer
                         {
-                            new OsuSpriteText()
+                            RelativeSizeAxes = Axes.Both,
+                            Margin = new MarginPadding {Left = 20, Top = 30},
+                            Spacing = new Vector2(0,30),
+                            Direction = FillDirection.Horizontal,
+                            Children = new Drawable[]
                             {
-                                Text = "Soft",
-                                Margin = new MarginPadding {Top = 2 * ROW_HEIGHT }
-                            }
-                        },
-                        new Drawable[]
-                        {
-                            new OsuSpriteText()
-                            {
-                                Text = "Drum",
-                                Margin = new MarginPadding {Top = 3 * ROW_HEIGHT }
+                                new OsuSpriteText()
+                                {
+                                    Text = "Normal"                                },
+                                new OsuSpriteText()
+                                {
+                                    Text = "Play normal-hitnormal",
+                                },
+                                new OsuSpriteText()
+                                {
+                                    Text = "Play normal-hitwhistle"
+
+                                },
+                                new OsuSpriteText()
+                                {
+                                    Text = "Play normal-hitfinish"
+
+                                },
+                                new OsuSpriteText()
+                                {
+                                    Text = "Play normal-hitclap"
+
+                                }
                             }
                         }
-                    }
-                }
-            }; 
+                    },
+
+                },
+
+            };
         }
     }
 
