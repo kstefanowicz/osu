@@ -35,7 +35,7 @@ namespace osu.Game.Screens.Edit.Sounds
             {
                 new Drawable[]
                 {
-                    new HitsoundsTable();
+                    new HitsoundsTable()
                 },
             }
         };
