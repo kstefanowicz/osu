@@ -35,7 +35,7 @@ namespace osu.Game.Screens.Edit.Sounds
                 {
                     Width = 500,
                     RelativeSizeAxes = Axes.Both,
-                    Spacing = new Vector2(0,ROW_HEIGHT + ROW_HORIZONTAL_PADDING),
+                    Spacing = new Vector2(ROW_HEIGHT,ROW_HEIGHT + ROW_HORIZONTAL_PADDING),
                     Children = new Drawable[]
                     {
                         new FillFlowContainer
@@ -43,6 +43,7 @@ namespace osu.Game.Screens.Edit.Sounds
                             RelativeSizeAxes = Axes.X,
                             AutoSizeAxes = Axes.Y,
                             Direction = FillDirection.Horizontal,
+                            Spacing = new Vector2(50),
                             Children = new Drawable[]
                                 {
                                 new TableHeaderText("Bank")
@@ -71,7 +72,9 @@ namespace osu.Game.Screens.Edit.Sounds
                                 }
                             }
                         },
-                        new HitsoundsTableRow()
+                        new HitsoundsTableRow("normal"),
+                        new HitsoundsTableRow("soft"),
+                        new HitsoundsTableRow("drum")
                     },
 
                 },

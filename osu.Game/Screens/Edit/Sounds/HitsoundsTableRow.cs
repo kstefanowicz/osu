@@ -11,20 +11,37 @@ using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
 using osu.Game.Overlays;
+using osuTK;
 
 namespace osu.Game.Screens.Edit.Sounds
 {
     public partial class HitsoundsTableRow : CompositeDrawable
     {
+        private string bankName;
+
+        public HitsoundsTableRow(string BankName)
+        {
+            bankName = BankName;
+        }
+
         [BackgroundDependencyLoader]
         private void load(OverlayColourProvider colours)
         {
             InternalChildren = new Drawable[]
             {
-                new HitsoundsTableCell(),
-                new HitsoundsTableCell(),
-                new HitsoundsTableCell(),
-                new HitsoundsTableCell()
+                new FillFlowContainer
+                {
+                    AutoSizeAxes = Axes.X,
+                    Direction = FillDirection.Horizontal,
+                    Spacing = new Vector2(50),
+                    Children = new Drawable[]
+                    {
+                        new HitsoundsTableCell(bankName, "normal"),
+                        new HitsoundsTableCell(bankName, "whistle"),
+                        new HitsoundsTableCell(bankName, "finish"),
+                        new HitsoundsTableCell(bankName, "clap")
+                    }
+                }
             };
         }
     }

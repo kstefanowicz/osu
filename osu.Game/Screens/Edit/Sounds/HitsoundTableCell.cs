@@ -17,14 +17,30 @@ namespace osu.Game.Screens.Edit.Sounds
 {
     public partial class HitsoundsTableCell : CompositeDrawable
     {
+        private string hitsoundFileName;
+
+        public HitsoundsTableCell(string bankName, string hitsoundName)
+        {
+            hitsoundFileName = bankName + "-hit" + hitsoundName + ".mp3";
+        }
+
         [BackgroundDependencyLoader]
         private void load(OverlayColourProvider colours)
         {
             InternalChildren = new Drawable[]
             {
-                new OsuSpriteText()
+                new Container
                 {
-                    Text = "normal-hitnormal"
+                    AutoSizeAxes = Axes.X,
+                    Children = new Drawable[]
+                    {
+                        new OsuSpriteText()
+                        {
+                            Text = hitsoundFileName
+                        }
+                    }
+
+
                 }
             };
         }
