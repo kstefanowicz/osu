@@ -7,13 +7,17 @@ using osuTK;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
-using osu.Framework.Graphics.Pooling;
 using osu.Framework.Graphics.Shapes;
-using osu.Game.Graphics.UserInterfaceV2;
 using osu.Framework.Graphics.Sprites;
 using osu.Game.Graphics.Sprites;
 using osu.Game.Overlays;
 using osu.Game.Graphics;
+using osu.Game.Graphics.UserInterface;
+using osu.Game.Graphics.UserInterfaceV2;
+using osu.Framework.Audio;
+using osu.Framework.Audio.Sample;
+using System;
+using osu.Game.Skinning;
 
 namespace osu.Game.Screens.Edit.Sounds
 {
@@ -31,6 +35,11 @@ namespace osu.Game.Screens.Edit.Sounds
         {
             InternalChildren = new Drawable[]
             {
+                new Box
+                {
+                    Colour = colours.Background4,
+                    RelativeSizeAxes = Axes.Both,
+                },
                 new FillFlowContainer
                 {
                     Width = 500,
@@ -48,7 +57,7 @@ namespace osu.Game.Screens.Edit.Sounds
                                 {
                                 new TableHeaderText("Bank")
                                 {
-
+                                    Width = 50
                                 },
                                 new SpriteIcon
                                 {
@@ -92,8 +101,81 @@ namespace osu.Game.Screens.Edit.Sounds
             Drum
         }
     }
+
+    public partial class HitsoundsTableRow : CompositeDrawable
+    {
+        private string bankName;
+
+        public HitsoundsTableRow(string BankName)
+        {
+            bankName = BankName;
+        }
+
+        [BackgroundDependencyLoader]
+        private void load(OverlayColourProvider colours)
+        {
+            InternalChildren = new Drawable[]
+            {
+                new FillFlowContainer
+                {
+                    AutoSizeAxes = Axes.X,
+                    Direction = FillDirection.Horizontal,
+                    Spacing = new Vector2(70),
+                    Children = new Drawable[]
+                    {
+                        new OsuSpriteText{ Text = bankName , Width = 50},
+                        new HitsoundsTableCell(bankName, "normal"),
+                        new HitsoundsTableCell(bankName, "whistle"),
+                        new HitsoundsTableCell(bankName, "finish"),
+                        new HitsoundsTableCell(bankName, "clap")
+                    }
+                }
+            };
+        }
+    }
+
+    public partial class HitsoundsTableCell : CompositeDrawable
+    {
+        private string hitsoundFileName;
+        private AudioManager audioManager;
+
+        public HitsoundsTableCell(string bankName, string hitsoundName)
+        {
+            hitsoundFileName = bankName + "-hit" + hitsoundName;
+        }
+
+        [BackgroundDependencyLoader]
+        private void load(OverlayColourProvider colours, AudioManager audio)
+        {
+            audioManager = audio;
+
+            InternalChildren = new Drawable[]
+            {
+                new Container
+                {
+                    AutoSizeAxes = Axes.X,
+                    Children = new Drawable[]
+                    {
+                        new IconButton
+                        {
+                            IconScale = new Vector2(1.5f),
+                            Icon = FontAwesome.Regular.PlayCircle,
+                            Size = new Vector2(30, 30),
+                            Action = PlayHitsound
+                        }
+                    }
+
+                }
+            };
+        }
+
+        public void PlayHitsound()
+        {
+            // Play default hitsound
+            audioManager.Samples.Get(@"Gameplay/" + hitsoundFileName).Play();
+
+            // Attempt to play hitsounds specific to skin/beatmap
+            //(new SkinnableSound(new Audio.SampleInfo(@"gameplay/" + hitsoundFileName))).Play();
+        }
+    }
 }
-
-  
-
-   
